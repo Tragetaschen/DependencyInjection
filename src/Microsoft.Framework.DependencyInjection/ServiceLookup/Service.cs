@@ -25,7 +25,7 @@ namespace Microsoft.Framework.DependencyInjection.ServiceLookup
             get { return _descriptor.Lifecycle; }
         }
 
-        public IServiceCallSite CreateCallSite(ServiceProvider provider, HashSet<Type> callSiteChain)
+        public IServiceCallSite CreateCallSite(ServiceProvider provider, ISet<Type> callSiteChain)
         {
             ConstructorInfo[] constructors = _descriptor.ImplementationType.GetTypeInfo()
                 .DeclaredConstructors

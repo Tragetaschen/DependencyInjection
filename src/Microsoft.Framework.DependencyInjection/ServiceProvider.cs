@@ -86,7 +86,7 @@ namespace Microsoft.Framework.DependencyInjection
             };
         }
 
-        internal IServiceCallSite GetServiceCallSite(Type serviceType, HashSet<Type> callSiteChain)
+        internal IServiceCallSite GetServiceCallSite(Type serviceType, ISet<Type> callSiteChain)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace Microsoft.Framework.DependencyInjection
 
         }
 
-        internal IServiceCallSite GetResolveCallSite(IService service, HashSet<Type> callSiteChain)
+        internal IServiceCallSite GetResolveCallSite(IService service, ISet<Type> callSiteChain)
         {
             IServiceCallSite serviceCallSite = service.CreateCallSite(this, callSiteChain);
             if (service.Lifecycle == LifecycleKind.Transient)

@@ -12,6 +12,6 @@ namespace Microsoft.Framework.DependencyInjection.ServiceLookup
 
         LifecycleKind Lifecycle { get; }
 
-        IServiceCallSite CreateCallSite(ServiceProvider provider, HashSet<Type> callSiteChain);
+        IServiceCallSite CreateCallSite(ServiceProvider provider, ISet<Type> callSiteChain);
     }
 }
