@@ -3,8 +3,7 @@
     "description": "Dependency injection abstraction and fallback implementation.",
     "dependencies": {
         "Microsoft.Framework.ConfigurationModel": "1.0.0-beta4",
-        "Microsoft.Framework.DependencyInjection.Interfaces": "",
-        "Microsoft.Framework.NotNullAttribute.Internal": { "version": "1.0.0-beta4", "type": "build" }
+        "Microsoft.Framework.DependencyInjection.Interfaces": ""
     },
     "frameworks": {
         "dnx451": { }

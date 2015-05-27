@@ -3,7 +3,6 @@
 
 using System;
 using System.Diagnostics;
-using Microsoft.Framework.Internal;
 
 namespace Microsoft.Framework.DependencyInjection
 {
@@ -16,8 +15,8 @@ namespace Microsoft.Framework.DependencyInjection
         /// <param name="serviceType">The <see cref="Type"/> of the service.</param>
         /// <param name="implementationType">The <see cref="Type"/> implementing the service.</param>
         /// <param name="lifetime">The <see cref="ServiceLifetime"/> of the service.</param>
-        public ServiceDescriptor([NotNull] Type serviceType,
-                                 [NotNull] Type implementationType,
+        public ServiceDescriptor(Type serviceType,
+                                 Type implementationType,
                                  ServiceLifetime lifetime)
             : this(serviceType, lifetime)
         {
@@ -30,8 +29,8 @@ namespace Microsoft.Framework.DependencyInjection
         /// </summary>
         /// <param name="serviceType">The <see cref="Type"/> of the service.</param>
         /// <param name="instance">The instance implementing the service.</param>
-        public ServiceDescriptor([NotNull] Type serviceType,
-                                 [NotNull] object instance)
+        public ServiceDescriptor(Type serviceType,
+                                 object instance)
             : this(serviceType, ServiceLifetime.Singleton)
         {
             ImplementationInstance = instance;
@@ -43,8 +42,8 @@ namespace Microsoft.Framework.DependencyInjection
         /// <param name="serviceType">The <see cref="Type"/> of the service.</param>
         /// <param name="factory">A factory used for creating service instances.</param>
         /// <param name="lifetime">The <see cref="ServiceLifetime"/> of the service.</param>
-        public ServiceDescriptor([NotNull] Type serviceType,
-                                 [NotNull] Func<IServiceProvider, object> factory,
+        public ServiceDescriptor(Type serviceType,
+                                 Func<IServiceProvider, object> factory,
                                  ServiceLifetime lifetime)
             : this(serviceType, lifetime)
         {
@@ -78,19 +77,19 @@ namespace Microsoft.Framework.DependencyInjection
             return Describe<TService, TImplementation>(ServiceLifetime.Transient);
         }
 
-        public static ServiceDescriptor Transient([NotNull] Type service, [NotNull] Type implementationType)
+        public static ServiceDescriptor Transient(Type service, Type implementationType)
         {
             return Describe(service, implementationType, ServiceLifetime.Transient);
         }
 
-        public static ServiceDescriptor Transient<TService>([NotNull] Func<IServiceProvider, TService> implementationFactory)
+        public static ServiceDescriptor Transient<TService>(Func<IServiceProvider, TService> implementationFactory)
             where TService : class
         {
             return Describe(typeof(TService), implementationFactory, ServiceLifetime.Transient);
         }
 
-        public static ServiceDescriptor Transient([NotNull] Type service,
-                                                  [NotNull] Func<IServiceProvider, object> implementationFactory)
+        public static ServiceDescriptor Transient(Type service,
+                                                  Func<IServiceProvider, object> implementationFactory)
         {
             return Describe(service, implementationFactory, ServiceLifetime.Transient);
         }
@@ -106,14 +105,14 @@ namespace Microsoft.Framework.DependencyInjection
             return Describe(service, implementationType, ServiceLifetime.Scoped);
         }
 
-        public static ServiceDescriptor Scoped<TService>([NotNull] Func<IServiceProvider, TService> implementationFactory)
+        public static ServiceDescriptor Scoped<TService>(Func<IServiceProvider, TService> implementationFactory)
             where TService : class
         {
             return Describe(typeof(TService), implementationFactory, ServiceLifetime.Scoped);
         }
 
-        public static ServiceDescriptor Scoped([NotNull] Type service,
-                                               [NotNull] Func<IServiceProvider, object> implementationFactory)
+        public static ServiceDescriptor Scoped(Type service,
+                                               Func<IServiceProvider, object> implementationFactory)
         {
             return Describe(service, implementationFactory, ServiceLifetime.Scoped);
         }
@@ -124,30 +123,30 @@ namespace Microsoft.Framework.DependencyInjection
             return Describe<TService, TImplementation>(ServiceLifetime.Singleton);
         }
 
-        public static ServiceDescriptor Singleton([NotNull] Type service, [NotNull] Type implementationType)
+        public static ServiceDescriptor Singleton(Type service, Type implementationType)
         {
             return Describe(service, implementationType, ServiceLifetime.Singleton);
         }
 
-        public static ServiceDescriptor Singleton<TService>([NotNull] Func<IServiceProvider, TService> implementationFactory)
+        public static ServiceDescriptor Singleton<TService>(Func<IServiceProvider, TService> implementationFactory)
             where TService : class
         {
             return Describe(typeof(TService), implementationFactory, ServiceLifetime.Singleton);
         }
 
-        public static ServiceDescriptor Singleton([NotNull] Type serviceType,
-                                                  [NotNull] Func<IServiceProvider, object> implementationFactory)
+        public static ServiceDescriptor Singleton(Type serviceType,
+                                                  Func<IServiceProvider, object> implementationFactory)
         {
             return Describe(serviceType, implementationFactory, ServiceLifetime.Singleton);
         }
 
-        public static ServiceDescriptor Instance<TService>([NotNull] TService implementationInstance)
+        public static ServiceDescriptor Instance<TService>(TService implementationInstance)
         {
             return Instance(typeof(TService), implementationInstance);
         }
 
-        public static ServiceDescriptor Instance([NotNull] Type serviceType,
-                                                 [NotNull] object implementationInstance)
+        public static ServiceDescriptor Instance(Type serviceType,
+                                                 object implementationInstance)
         {
             return new ServiceDescriptor(serviceType, implementationInstance);
         }

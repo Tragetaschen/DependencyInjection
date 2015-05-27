@@ -2,7 +2,6 @@
     "version": "1.0.0-*",
     "description": "Contracts for dependency injection.",
     "dependencies": {
-        "Microsoft.Framework.NotNullAttribute.Internal": { "version": "1.0.0-beta4", "type": "build" }
     },
     "frameworks": {
         "dnx451": { }
